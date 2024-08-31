@@ -1,5 +1,5 @@
-from Crypto.Cipher import AES 
-from Crypto.Util.Padding import pad
+from crypto.Cipher import AES 
+from crypto.Util.Padding import pad
 import hashlib
 from error import Qin_resource_check,Qin_time_limit_check
 @Qin_resource_check(cpu=20,memory=30)
