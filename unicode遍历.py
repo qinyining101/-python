@@ -8,8 +8,6 @@ def int_to_unicode_escape(int_value):
     unicode_escape = f"\\u{hex_value}"
     return unicode_escape
 
-
-
 def is_printable(char):
     """判断字符是否可打印"""
     category = unicodedata.category(char)
@@ -91,6 +89,14 @@ def get_control_char_description(char):
 
     return control_char_descriptions.get(ord(char), "未知控制字符")
 
+def get_char_description(char):
+    """获取字符的描述"""
+    try:
+        name = unicodedata.name(char)
+        return f"[{name}]"
+    except ValueError:
+        return "[没有分配名称的字符]"
+
 def traverse_unicode_characters():
     # 打开文件以写入模式，使用utf-8编码
     with open("Unicode对照表.txt", "w", encoding="utf-8") as file:
@@ -102,11 +108,8 @@ def traverse_unicode_characters():
                 # 判断字符是否可打印
                 if is_printable(char):
                     # 将字符及其码点写入文件
-                    if char==chr(ord(" ")-1):
-                        file.write(f"U+{code_point:04X} - [ {char} ]\n"+"[SPACE]")
-                    else:
-                        file.write(f"U+{code_point:04X} - [ {char} ]\n"+"["+unicodedata.name(chr(ord(char)+1))+"]")
-
+                    description = get_char_description(char)
+                    file.write(f"U+{code_point:04X} - [ {char} ] {description}\n")
                 else:
                     # 获取控制字符的用途
                     description = get_control_char_description(char)
@@ -120,5 +123,6 @@ def traverse_unicode_characters():
                 # 如果码点无效，则跳过
                 continue
 
-if __name__ == "__main__":
-    traverse_unicode_characters()
+traverse_unicode_characters()
+    
+
