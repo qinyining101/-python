@@ -102,7 +102,10 @@ def traverse_unicode_characters():
                 # 判断字符是否可打印
                 if is_printable(char):
                     # 将字符及其码点写入文件
-                    file.write(f"U+{code_point:04X} - [ {char} ]\n"+"["+unicodedata.name(chr(ord(char)+1))+"]")
+                    if char==chr(ord(" ")-1):
+                        file.write(f"U+{code_point:04X} - [ {char} ]\n"+"[SPACE]")
+                    else:
+                        file.write(f"U+{code_point:04X} - [ {char} ]\n"+"["+unicodedata.name(chr(ord(char)+1))+"]")
 
                 else:
                     # 获取控制字符的用途
