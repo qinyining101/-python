@@ -93,7 +93,7 @@ def get_control_char_description(char):
 
 def traverse_unicode_characters():
     # 打开文件以写入模式，使用utf-8编码
-    with open("Unicode对照表.txt", "w", encoding="utf-8") as file:
+    with open("Unicode对照表meta.txt", "w", encoding="utf-8") as file:
         # Unicode字符集的范围是从0到0x10FFFF
         for code_point in range(0x110000):
             try:
