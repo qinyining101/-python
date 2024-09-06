@@ -93,17 +93,35 @@ def get_unicode_line(input_value):
     """根据输入的字符或 Unicode 代码，输出对应的一整行"""
     try:
         if isinstance(input_value, str):
+            char=[]
+            char1=''
+            return_value=[]
             if input_value.startswith("0x") or input_value.startswith("0X"):
                 code_point = int(input_value, 16)
+                char1 = chr(code_point)
+                if is_printable(char1):
+                    description = get_char_description(char)
+                    return f"U+{code_point:04X} - [ {char} ] {description}"
+                description = get_control_char_description(char)
+                if description == "未知控制字符":
+                    return f"U+{code_point:04X} - 未分配字符的点位"
+                else:
+                    return f"U+{code_point:04X} - 控制字符类型 - {description}"
             else:
-                if(len(input_value) != 1):
-                    return "无效的输入"
-                code_point = ord(input_value)
-            char = chr(code_point)
+                for c in input_value:
+                    char.append(ord(c))
+                    if is_printable(c):
+                        description = get_char_description(c)
+                        return_value.append(f"U+{ord(c):04X} - [ {c} ] {description}")
+                    description = get_control_char_description(c)
+                    if description == "未知控制字符":
+                        return_value.append(f"U+{ord(c):04X} - 未分配字符的点位")
+                    else:
+
+                        return_value.append(f"U+{ord(c):04X} - 控制字符类型 - {description}")
         else:
             char = input_value
             code_point = ord(char)
-        
         if is_printable(char):
             description = get_char_description(char)
             return f"U+{code_point:04X} - [ {char} ] {description}"
@@ -116,7 +134,7 @@ def get_unicode_line(input_value):
     except ValueError:
         return "无效的输入"
 while True:
-    input_value = input("请输入 Unicode 代码(0x开头的4-6位十六进制)或字符进行查询，输入 exit 退出：")
+    input_value = input("请输入 Unicode 代码(0x开头的4-6位十六进制)或字符串(不以0x或0X开头，不为exit)进行查询，输入 exit 退出：")
     if input_value == "exit":
         break
 
