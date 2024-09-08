@@ -100,9 +100,9 @@ def get_unicode_line(input_value):
                 code_point = int(input_value, 16)
                 char1 = chr(code_point)
                 if is_printable(char1):
-                    description = get_char_description(char)
-                    return f"U+{code_point:04X} - [ {char} ] {description}"
-                description = get_control_char_description(char)
+                    description = get_char_description(char1)
+                    return f"U+{code_point:04X} - [ {char1} ] {description}"
+                description = get_control_char_description(char1)
                 if description == "未知控制字符":
                     return f"U+{code_point:04X} - 未分配字符的点位"
                 else:
@@ -119,23 +119,20 @@ def get_unicode_line(input_value):
                     else:
 
                         return_value.append(f"U+{ord(c):04X} - 控制字符类型 - {description}")
-        else:
-            char = input_value
-            code_point = ord(char)
-        if is_printable(char):
-            description = get_char_description(char)
-            return f"U+{code_point:04X} - [ {char} ] {description}"
-        else:
-            description = get_control_char_description(char)
-            if description == "未知控制字符":
-                return f"U+{code_point:04X} - 未分配字符的点位"
-            else:
-                return f"U+{code_point:04X} - 控制字符类型 - {description}"
+        return return_value
     except ValueError:
         return "无效的输入"
 while True:
     input_value = input("请输入 Unicode 代码(0x开头的4-6位十六进制)或字符串(不以0x或0X开头，不为exit)进行查询，输入 exit 退出：")
     if input_value == "exit":
         break
-
-    print("查询结果:"+get_unicode_line(input_value))
+    output_value='\n'
+    ans=get_unicode_line(input_value)
+    for i in range(len(ans)):
+        if len(input_value)!=1:
+            if i%2==0:
+                output_value+=ans[i]+'\n'
+        else:
+            if i%2==0:
+                output_value+=ans[i]
+    print("查询结果:"+output_value)
