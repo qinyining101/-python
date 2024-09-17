@@ -37,5 +37,7 @@ class Stack:
 
     def __str__(self):
         return str(self.items)  # 可以自定义输出格式
+
 stack1=Stack()
 stack2=Stack(max_size=5)
+print(stack1.pop())

@@ -39,7 +39,7 @@ while running:
         char = random.choice(chars)
         # 渲染字符
         text = font.render(char, True, green)
-        # 绘制字符
+        # 在当前窗口绘制字符
         screen.blit(text, (i * 20, drops[i] * 20))
         # 更新下落位置
         drops[i] += 1
@@ -49,7 +49,7 @@ while running:
 
     # 更新屏幕
     pygame.display.flip()
-    # 控制帧率
+    # 控制帧率 50帧
     pygame.time.delay(50)
 
 # 退出Pygame
