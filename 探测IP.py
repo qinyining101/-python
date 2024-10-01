@@ -23,7 +23,6 @@ def scan_network(ip, netmask="255.255.255.0"):
         try:  
             response = requests.get(f'http://{host_ip}', timeout=0.5)  
             if response.status_code == 200:  
-                # 提取服务器的操作系统和版本信息（如果有）
                 print(f"{host_ip} is alive and has an HTTP service running.")  
             else:  
                 print(f"{host_ip} is alive but HTTP service responded with {response.status_code}.")  
