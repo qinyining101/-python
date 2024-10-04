@@ -1,0 +1,14 @@
+sent message successfully at :2024-10-04 22:15:40.000836 to 资料
+error happened at :2024-10-04 22:15:40.000836 sending message to 文件传输助手, error log:Find Control Timeout: {Name: '文件传输助手', ControlType: EditControl}
+sent message successfully at :2024-10-04 22:15:40.000836 to MOZ
+sent message successfully at :2024-10-04 22:16:40.000453 to 资料
+sent message successfully at :2024-10-04 22:16:40.000453 to 文件传输助手
+error happened at :2024-10-04 22:16:40.000453 sending message to MOZ, error log:Find Control Timeout: {Name: 'MOZ', ControlType: EditControl}
+sent message successfully at :2024-10-04 22:17:40.000907 to 资料
+sent message successfully at :2024-10-04 22:17:40.000907 to 文件传输助手
+sent message successfully at :2024-10-04 22:18:40.000512 to 资料
+sent message successfully at :2024-10-04 22:18:40.000512 to 文件传输助手
+sent message successfully at :2024-10-04 23:00:20.000383 to 资料
+error happened at :2024-10-04 23:00:20.000383 sending message to 文件传输助手, error log:Find Control Timeout: {Name: '文件传输助手', ControlType: EditControl}
+sent message successfully at :2024-10-04 23:01:20.000466 to 资料
+sent message successfully at :2024-10-04 23:01:20.000466 to 文件传输助手
